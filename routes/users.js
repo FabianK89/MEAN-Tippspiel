@@ -27,7 +27,7 @@ router.post('/register', (req, res, next) => {
 // Authenticate
 router.post('/authenticate', (req, res, next) => {
     const username = req.body.username;
-    const password = req.body.passpord;
+    const password = req.body.password;
 
     User.getUserByUsername(username, (err, user) => {
         if (err) throw err;
@@ -40,7 +40,7 @@ router.post('/authenticate', (req, res, next) => {
             if (err) throw err;
 
             if (isMatch) {
-                const token = jwt.sign(user, config.secret, {
+                const token = jwt.sign(user.toJSON(), config.secret, {
                     expiresIn: 604800 // 1 week in seconds
                 });
 
