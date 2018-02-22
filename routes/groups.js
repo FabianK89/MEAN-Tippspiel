@@ -23,4 +23,18 @@ router.post('/create', passport.authenticate('jwt', { session: false }), (req, r
     });
 });
 
+// Find groups for user
+router.post('/getGroupsForUser', (req, res, next) => {
+    console.log('Test');
+    const userID = req.body.userID;
+
+    Group.getGroupsForUser(userID, (err, groups) => {
+        if (err) {
+            res.json({success: false, msg: 'Failed to get groups for user'});
+        } else {
+            console.log(groups);
+        }
+    });
+});
+
 module.exports = router;

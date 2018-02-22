@@ -26,6 +26,8 @@ export class CreateGroupComponent implements OnInit {
       console.log(err);
       return false;
     });
+
+    console.log(this.user);
   }
 
   onCreateGroupSubmit() {

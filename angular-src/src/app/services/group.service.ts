@@ -16,11 +16,20 @@ export class GroupService {
 
     this.authService.loadToken();
 
-    console.log(group);
-
     headers.append('Authorization', this.authService.getToken());
     headers.append('Content-Type', 'application/json');
 
     return this.http.post('http://localhost:3000/groups/create', group, { headers: headers }).map(res => res.json());
+  }
+
+  findGroupsForUser(userID) {
+    const headers = new Headers();
+
+    this.authService.loadToken();
+
+    headers.append('Authorization', this.authService.getToken());
+    headers.append('Content-Type', 'application/json');
+
+    return this.http.post('http://localhost:3000/groups/getGroupsForUser', { userID: userID}, { headers: headers }).map(res => res.json());
   }
 }

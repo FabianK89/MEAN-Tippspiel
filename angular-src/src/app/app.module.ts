@@ -19,6 +19,7 @@ import { AuthService } from './services/auth.service';
 import { GroupService } from './services/group.service';
 import { FlashMessagesModule, FlashMessagesService } from 'angular2-flash-messages';
 import { AuthGuard } from './guards/auth.guard';
+import { GroupNavbarComponent } from './components/groups/group-navbar/group-navbar.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -40,7 +41,8 @@ const appRoutes: Routes = [
     DashboardComponent,
     ProfileComponent,
     GroupsComponent,
-    CreateGroupComponent
+    CreateGroupComponent,
+    GroupNavbarComponent
   ],
   imports: [
     BrowserModule,
